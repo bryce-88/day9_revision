@@ -1,5 +1,7 @@
 package sdf;
 
+import java.util.Arrays;
+
 public class TicTacToe {
     //class to print the board
 
@@ -16,6 +18,7 @@ public class TicTacToe {
     public String checkWinner(String[] board) {
 
         String line = "";
+        String winner = "";
 
         int i = 0;
         while (i < 8) {
@@ -36,11 +39,31 @@ public class TicTacToe {
                 break;
                 case 7: line = board[2] + board[4] + board[6];
                 break;
+                default:
             }
 
             i++;
+
+            if (line.equalsIgnoreCase("XXX")) {
+                winner = "X";
+                //if there's a winner, set i = 9
+                i = 9;
+            } else if (line.equalsIgnoreCase("OOO")) {
+                winner = "O";
+                i = 9;
+            } else {
+                for (int a = 0; a < 9; a++) {
+                    if (Arrays.asList(board).contains(String.valueOf(a+1))) {
+                        break;
+                    } else if (a == 8) {
+                        winner = "draw";
+                    }
+                }
+            }
+
+
         }
 
-        return "";
+        return winner;
     }
 }
