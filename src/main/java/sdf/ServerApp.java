@@ -19,13 +19,12 @@ public final class ServerApp {
         ServerSocket ss = new ServerSocket(2000);
         Socket s = ss.accept();
         System.out.println("Connected to localhost:2000");
-        
-        
-
 
         Random rand = new Random();
         Integer guessNumber = rand.nextInt(100);
         Integer myGuess = 0;
+
+        
 
         while (myGuess != guessNumber) {
 
